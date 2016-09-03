@@ -59,23 +59,33 @@ inoremap <expr> <PageUp>   pumvisible() ?  "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
 set mousehide               " Hide the mouse cursor while typing
 "共享剪贴板  
 set clipboard+=unnamed 
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
 " required! 
+"自动补全插件
 Bundle 'Shougo/neocomplcache'
 let g:neocomplcache_enable_at_startup = 1
+"插件管理器
 Bundle 'gmarik/vundle'
+"目录树
 Bundle 'scrooloose/nerdtree'
+"状态栏
 Bundle 'Lokaltog/vim-powerline'
+"语法检查
 Bundle 'scrooloose/syntastic'
+"操作字符串双边的符号
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'mileszs/ack.vim'
+"php文档
 Bundle 'alvan/vim-php-manual'
+"自动注释
 Bundle 'DoxygenToolkit.vim'
 " My Bundles here:
+
+Bundle 'docunext/closetag.vim'
+
 
 filetype plugin indent on     " required!
 "
@@ -93,6 +103,12 @@ set laststatus=2
 set guifont=PowerlineSymbols\ for\ Powerline
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
+let g:DoxygenToolkit_authorName="linjianmin <linjm388@mingchao.com>"
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:doxygen_enhanced_color=1
+map <leader>a :DoxAuthor
+map <leader>d :Dox
+let g:closetag_html_style=1
 "用空格来控制折叠
 nnoremap <space> @=((foldclosed(line('.')) < 0) ?  'zc' : 'zo')<CR>
 " 当文件在外部被修改，自动更新该文件
